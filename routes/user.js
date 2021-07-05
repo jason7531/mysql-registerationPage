@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../core/user");
 const user = new User();
 const controller = require("../controllers/user");
+const jwt = require("jsonwebtoken");
 
 const { isVerified } = require("../middlewares/verifyToken");
 
@@ -15,6 +16,7 @@ router.get("/login", (req, res) => {
 
 router.post("/register", controller.registerUser);
 router.post("/login", (req, res, next) => {
+  console.log(req.body);
   user.login(req.body.email, req.body.password, function (result) {
     if (result) {
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);

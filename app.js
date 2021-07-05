@@ -12,7 +12,7 @@ dotenv.config();
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: process.env.PW,
+  password: "Rohit123",
   database: "web",
 });
 
